@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  api-1:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 5001:3000
+    environment:
+      - SERVER_NAME=api-1
+  api-2:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 5002:3000
+    environment:
+      - SERVER_NAME=api-2
+  api-3:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 5003:3000
+    environment:
+      - SERVER_NAME=api-3
+  api-4:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 5004:3000
+    environment:
+      - SERVER_NAME=api-4
+  web:
+    restart: always
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
